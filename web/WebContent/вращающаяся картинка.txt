@@ -1,0 +1,37 @@
+		<div class="main-box">
+	<div class="outer"></div>
+</div>
+ css
+
+
+/*Создаём бокс для двух элементов*/ 
+ .main-box:hover {
+	width: 100px;
+	height: 100px;
+/* Подключаем свойство transform-style для 3D */
+	transform-style: preserve-3d;
+/* Подключаем анимацию для вращения и обзора */
+	animation: main-rotate 10s infinite linear;
+}
+/* Наружний квадрат */
+ .outer {
+	position: absolute;
+	width: 120px;
+	height: 100px; /* Прозрачность для лучшего визуального восприятия */;
+	opacity: 0.6;
+	background-image: url('../WebContent/sapkon1.gif');
+}
+
+/*Внутренний квадрат*/
+ .interior {
+/* Отодвигаем внурь и уменьшаем масштаб */
+opacity: 0.7;
+	transform: translateZ(-5em) scale(0.8);
+	
+  }
+/* Анимация вращение вокруг вертикальной оси*/
+ @keyframes main-rotate {
+  100% {
+    transform: rotateY(360deg);
+  }
+}

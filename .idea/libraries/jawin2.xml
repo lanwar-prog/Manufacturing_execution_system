@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jawin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jawin/jawin-stubs.jar!/" />
+      <root url="jar://$PROJECT_DIR$/jawin/jawin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

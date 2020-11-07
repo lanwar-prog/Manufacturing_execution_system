@@ -1,0 +1,79 @@
+<%-- 
+    Document   : ListMaterials
+    Created on : 12.05.2016, 16:42:29
+    Author     : Ковалев Алексей
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles/MainStyle.css">
+        <link rel="stylesheet" type="text/css" href="styles/table.css">
+        <title>JSP Page</title>
+    </head>
+    <body style="background: none;">
+        <table align="center">
+            <tr>
+                <td>
+                    <% 
+                        if (request.getParameter("title") != null) {
+                            %>
+                                <p align="center">Список заказов в процессе выполнения</p>
+                            <%
+                        }
+                    %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <% 
+                        if (request.getParameter("title") != null) {
+                            %>
+                                <div style="max-height:400px;overflow-y: auto; width:856px;">
+                            <%
+                        }
+                    %>
+                    <table align="center" border="1" class="table_blur" width="850">
+                        <thead>
+                            <tr align="center">
+                            <th>Номер</th>
+                            <th>Клиент</th>
+                            <th>Дата<br>заказа</th>
+                            <th>Деталь</th>
+                            <th>Кол-во<br>изделий</th>
+                            <th>Срок<br>выполнения</th>
+                            <th>Срочность</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${orders}" var="order">
+                                <tr class='clickable-row'>
+                                    <td align="center" style="width:30px;" class="id"><c:out value="${order.id_order}" /></td>
+                                    <td style="width:120px;"><c:out value="${order.clientname}" /></td>
+                                    <td align="center" style="width:90px;"><fmt:formatDate pattern="dd.MM.yyyy г." value="${order.date}"/></td>
+                                    <td style="width:120px;"><c:out value="${order.id_detail} - ${order.detailname}" /></td>
+                                    <td align="right" style="width:60px;"><c:out value="${order.numberdetails}" /></td>
+                                    <td align="center" style="width:90px;"><fmt:formatDate pattern="dd.MM.yyyy г." value="${order.dateexecution}"/></td>
+                                    <td style="width:30px;"><c:out value="${order.urgency == 0 ? 'Нет' : order.urgency == 1 ? 'Да' : ''}" /></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <% 
+                        if (request.getParameter("title") != null) {
+                            %>
+                                </div>
+                            <%
+                        }
+                    %>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
